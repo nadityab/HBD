@@ -1,0 +1,6 @@
+/* Pastikan index.css bersih dari margin bawaan browser */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
