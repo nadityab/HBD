@@ -27,7 +27,31 @@ interface CustomData {
 }
 
 // FUNGSI BARU: Memecah teks per huruf dengan cara yang AMAN untuk React
+// FUNGSI BARU: Memecah teks per huruf dan mendeteksi "Enter" (\n)
 const SplitText = ({
+  text,
+  className = "",
+}: {
+  text: string;
+  className?: string;
+}) => {
+  return (
+    <span className={className}>
+      {text.split("").map((char, i) => {
+        // Jika kode mendeteksi \n, maka buat baris baru (<br />)
+        if (char === "\n") return <br key={i} />;
+
+        // Jika mendeteksi spasi biasa, paksa React membaca spasinya (&nbsp;)
+        if (char === " ") return <span key={i}>&nbsp;</span>;
+
+        // Selain itu, render hurufnya seperti biasa
+        return <span key={i}>{char}</span>;
+      })}
+    </span>
+  );
+};
+
+const SplitText2 = ({
   text,
   className = "",
 }: {
@@ -291,7 +315,7 @@ const HappyBirthday: React.FC = () => {
       <div className="four absolute inset-0 flex flex-col items-center justify-center px-4">
         <div className="text-box w-full max-w-lg p-6 bg-gray-50 rounded-2xl shadow-xl border border-gray-100 text-center">
           {/* MENGGUNAKAN KOMPONEN SPLITTEXT YANG AMAN */}
-          <SplitText
+          <SplitText2
             text={data.textInChatBox}
             className="hbd-chatbox block text-lg md:text-xl leading-relaxed text-gray-500"
           />
