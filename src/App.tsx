@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Bunny from "./Bunny";
+import HappyBirthday from "./HappyBirthdays"; // <-- Kita akan buat file ini
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<"welcome" | "mainApp">(
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <main className="w-full h-dvh overflow-hidden bg-gray-50">
-      {/* --- HALAMAN 1: WELCOME SCREEN (Dikembalikan agar bisa di-klik) --- */}
+      {/* --- HALAMAN 1: WELCOME SCREEN --- */}
       {currentScreen === "welcome" && (
         <div
           onClick={handleScreenClick}
@@ -35,7 +36,7 @@ function App() {
         >
           <div className="hidden md:block h-4"></div>
           <div className="shrink-0">
-            <Bunny name="Thifa!" />
+            <Bunny name="Name!" />
           </div>
           <div
             className={`shrink-0 transition-opacity duration-1000 ${
@@ -49,15 +50,10 @@ function App() {
         </div>
       )}
 
-      {/* --- HALAMAN 2: IFRAME KE FOLDER HAPPY BIRTHDAY --- */}
+      {/* --- HALAMAN 2: KOMPONEN NATIVE REACT --- */}
       {currentScreen === "mainApp" && (
-        // Menggunakan iframe untuk menampilkan file HTML dari folder public secara utuh
-        // PERHATIKAN: src dimulai dengan / bukan ../
-        <iframe
-          src="/happy-birthday/index2.html"
-          title="Happy Birthday Animation"
-          className="w-full h-full border-none block"
-        />
+        // Tidak ada lagi iframe! Kita panggil komponennya langsung
+        <HappyBirthday />
       )}
     </main>
   );
