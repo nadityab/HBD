@@ -54,7 +54,7 @@ function App() {
         // Menggunakan iframe untuk menampilkan file HTML dari folder public secara utuh
         // PERHATIKAN: src dimulai dengan / bukan ../
         <iframe
-          src="/happy-birthday/index.html"
+          src="/happy-birthday/index2.html"
           title="Happy Birthday Animation"
           className="w-full h-full border-none block"
         />
